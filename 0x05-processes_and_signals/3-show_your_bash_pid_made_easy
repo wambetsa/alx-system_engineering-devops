@@ -3,4 +3,4 @@
 # of processes whose name contain the word bash.
 # Requirements:You cannot use ps
 
-pgrep bash
+pgrep -l bash
