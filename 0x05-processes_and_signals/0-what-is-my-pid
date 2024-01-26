@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
+# Linux script that displays its PID.
 
-# Get pid of current process
 echo $$
