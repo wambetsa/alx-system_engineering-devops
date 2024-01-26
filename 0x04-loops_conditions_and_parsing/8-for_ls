@@ -3,12 +3,8 @@
 # In a list format, Where only the part of the name after the first dash is displayed (refer to the example)
 
 
-for file in *
-do
-    # Check if the file is not hidden and if it contains a dash
-    if [[ ! "$file" == .* && "$file" == *-* ]]; then
-        # Extract the part of the name after the first dash
-        filename="${file#*-}"
-        echo "$filename"
-    fi
+my_list=$(ls)
+
+for i in $my_list; do
+  echo "$i" | cut -d '-' -f2
 done
