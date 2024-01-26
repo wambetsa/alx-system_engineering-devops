@@ -7,7 +7,7 @@
 
 pgrep myscript.pid > /var/run/myscript.pid
 trap 'echo Y U no love me?!' 2
-trap 'echo I hate the kill command; rm /var/run/holbertonscript.pid; exit' 15
+trap 'echo I hate the kill command; rm /var/run/myscript.pid; exit' 15
 trap 'rm /var/run/myscript.pid; exit' 3
 while true; do
     echo "To infinity and beyond"
