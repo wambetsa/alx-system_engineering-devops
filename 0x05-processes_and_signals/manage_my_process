@@ -1,7 +1,36 @@
 #!/usr/bin/env bash
 # a script that prints "I am alive" indefinitely to this file /tmp/my_process
 
-while true; do
-    echo "I am alive!" >> /tmp/my_process
-    sleep 2
-done
+case "$1" in
+    start)
+        # Start manage_my_process
+        /bin/bash manage_my_process &
+        # Get the PID of the process
+        pid=$!
+        # Store the PID in /var/run/my_process.pid
+        echo $pid > /var/run/my_process.pid
+        echo "manage_my_process started"
+        ;;
+    stop)
+        # Stop manage_my_process if running
+        if [ -f /var/run/my_process.pid ]; then
+            pid=$(cat /var/run/my_process.pid)
+            kill $pid
+            rm /var/run/my_process.pid
+            echo "manage_my_process stopped"
+        else
+            echo "manage_my_process is not running"
+        fi
+        ;;
+    restart)
+        # Restart manage_my_process
+        $0 stop
+        $0 start
+        echo "manage_my_process restarted"
+        ;;
+    *)
+        # Display usage information
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac

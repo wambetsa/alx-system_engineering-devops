@@ -3,23 +3,20 @@
 
 case "$1" in
     start)
-	./manage_my_process &
-	echo "$!" > /var/run/my_process.pid
-	echo "manage_my_process started"
-	;;
+        # Start manage_my_process
+        sudo ./manage_my_process start
+        ;;
     stop)
-	kill "$(cat /var/run/my_process.pid)"
-	rm /var/run/my_process.pid
-	echo "manage_my_process stopped"
-	;;
+        # Stop manage_my_process
+        sudo ./manage_my_process stop
+        ;;
     restart)
-	kill "$(cat /var/run/my_process.pid)"
-	rm /var/run/my_process.pid
-	./manage_my_process &
-	echo "$!" > /var/run/my_process.pid
-	echo "manage_my_process restarted"
-	;;
+        # Restart manage_my_process
+        sudo ./manage_my_process restart
+        ;;
     *)
-	echo "Usage: manage_my_process {start|stop|restart}"
-	;;
+        # Display usage information
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
 esac
