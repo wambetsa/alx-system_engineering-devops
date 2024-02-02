@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Configure ubuntu server with the following requirements: localhost resolves to 127.0.0.2, facebook.com resolves to 8.8.8.8
-# Check if running in Docker
 if grep -q docker /proc/1/cgroup; then
     # Configure localhost to resolve to 127.0.0.2
     sudo sed -i 's/^127\.0\.0\.1.*localhost/127.0.0.2 localhost/' /etc/hosts
