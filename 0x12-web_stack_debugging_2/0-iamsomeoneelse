@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Bash script that accepts one argument
+# It run the whoami command under the user passed as an argument
+
+current_user=$(whoami)
+if [ $# -eq 0 ]; then
+	echo "$current_user"
+elif [ $# -eq 1 ]; then
+	current_user=$1
+	echo "$current_user"
+else
+	echo "enter only one user"
+fi
