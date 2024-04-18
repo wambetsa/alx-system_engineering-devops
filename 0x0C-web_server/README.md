@@ -18,7 +18,7 @@ Read or watch:
 - jewstechs@Jewstechs:~/alx/alx-system_engineering-devops/0x0C-web_server$ ./0-transfer_file
     - Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY
 - jewstechs@Jewstechs:~/alx/alx-system_engineering-devops/0x0C-web_server$ ssh ubuntu@18.207.236.1 -i ~/.ssh/id_rsa 'ls ~/'
-    -   
+
 - jewstechs@Jewstechs:~/alx/alx-system_engineering-devops/0x0C-web_server$ touch some_page.html
 - jewstechs@Jewstechs:~/alx/alx-system_engineering-devops/0x0C-web_server$ ./0-transfer_file some_page.html 18.207.236.1 jewstechs ~/.ssh/id_rsa
     - jewstechs@18.207.236.1: Permission denied (publickey).
