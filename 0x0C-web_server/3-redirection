@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-#Configure your Nginx server so that /redirect_me is redirecting to another page
+# Configure new ubuntu machine by installing
+# Nginx which should listen to port 80
+# Serve a page returning Hello World string
 
 #updating and installing nginx
 echo -e "\nUpdating packages\n"
