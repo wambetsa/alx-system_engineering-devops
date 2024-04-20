@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#configuring my Nginx server so that /redirect_me is redirecting to another page
+#Configure your Nginx server so that /redirect_me is redirecting to another page
 
 #updating and installing nginx
 echo -e "\nUpdating packages\n"
