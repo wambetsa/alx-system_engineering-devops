@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#Configure your Nginx server so that /redirect_me is redirecting to another page
+
+#updating and installing nginx
+echo -e "\nUpdating packages\n"
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+#starting nginx service
+echo -e "\nStarting nginx service\n"
+sudo service nginx start
+
+#allow nginx on firewall
+sudo ufw allow "Nginx HTTP"
+
+#give user ownership to webfiles for editing
+sudo chown -R $USER:$USER /var/www/html/index.nginx-debian.html
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+#setup /redirect_me to youtube
+sudo sed -i '24i rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+#restarting Nginx server
+sudo service nginx restart
+echo -e "\nSuccessfully completed.\n"
+
+
