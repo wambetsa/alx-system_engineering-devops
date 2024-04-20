@@ -85,3 +85,14 @@ YOU can have a free .tech domain for 1 year by following these steps:
     - ;; SERVER: 172.19.48.1#53(172.19.48.1) (UDP)
     - ;; WHEN: Sat Apr 20 15:10:13 EAT 2024
     - ;; MSG SIZE  rcvd: 60
+##### 3-redirection
+run 3-redirection script on web01 server
+- jewstechs@Jewstechs:~/alx/alx-system_engineering-devops/0x0C-web_server$ curl -sI 18.207.236.1/redirect_me
+    - HTTP/1.1 301 Moved Permanently
+    - Server: nginx/1.18.0 (Ubuntu)
+    - Date: Sat, 20 Apr 2024 12:41:23 GMT
+    - Content-Type: text/html
+    - Content-Length: 178
+    - Connection: keep-alive
+    - Location: https://www.youtube.com/watch?v=QH2-TGUlwu4
+
