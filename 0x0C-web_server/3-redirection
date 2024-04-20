@@ -14,8 +14,8 @@ sudo service nginx start
 sudo ufw allow "Nginx HTTP"
 
 #give user ownership to webfiles for editing
-sudo chown -R $USER:$USER /var/www/html/index.nginx-debian.html
-sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 #setup /redirect_me to youtube
 sudo sed -i '24i rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
