@@ -96,3 +96,28 @@ run 3-redirection script on web01 server
     - Connection: keep-alive
     - Location: https://www.youtube.com/watch?v=QH2-TGUlwu4
 
+##### 7. install nginx using puppet
+<!-- update system -->
+exec { 'update_system':
+    command => '/usr/bin/apt-get update',
+}
+<!-- install nginx -->
+package { 'nginx':
+    ensure => 'installed',
+    require => Exec['update_system]
+}
+<!-- write hello world to file -->
+file { '/var/www/html/index.html':
+    content => 'Hello World!',
+}
+<!-- redirect me -->
+exec { 'redirect_me':
+    command => 'sed -i "24i\ ......"',
+    provider => 'shell'
+}
+<!-- service running -->
+service { 'run nginx':
+    name => 'nginx',
+    ensure => 'running',
+    enabled => true,
+}
