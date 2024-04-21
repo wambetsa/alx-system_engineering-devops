@@ -1,45 +1,25 @@
 # Configuring server using puppet
 # install nginx and make it listen to port 80
-# Puppet manifest to install and configure Nginx web server
 
-# Install Nginx package
+exec { 'update system':
+	command => '/usr/bin/apt-get update',
+}
+
 package { 'nginx':
-  ensure => installed,
+	ensure => 'installed',
+	require => Exec['update system']
 }
 
-# Configure Nginx
-file { '/etc/nginx/sites-available/default':
-  content => "
-    server {
-      listen 80;
-      server_name _;
-
-      location / {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-      }
-
-      location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-      }
-
-      location / {
-        echo 'Hello World!';
-      }
-    }
-  ",
-  notify  => Service['nginx'],
+file { '/var/www/html/index.html':
+	content => 'Hello World!',
 }
 
-# Enable Nginx site
-file { '/etc/nginx/sites-enabled/default':
-  ensure => 'link',
-  target => '/etc/nginx/sites-available/default',
-  notify => Service['nginx'],
+exec {'redirect_me':
+	command => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+	provider => 'shell'
 }
 
-# Ensure Nginx service is running and enabled
-service { 'nginx':
-  ensure  => 'running',
-  enable  => true,
-  require => Package['nginx'],
+service {'nginx':
+	ensure => running,
+	require => Package['nginx']
 }
