@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# make nginx to listen to port 80
-cd /etc/nginx/sites-enabled/ || exit;
-rm default
-# create symbolic link to default file in sites-available
-ln -s /etc/nginx/sites-available/default default;
-services nginx restart
+# configure nginx server to listen to port 80
+
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo services nginx restart
